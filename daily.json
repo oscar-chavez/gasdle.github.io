@@ -1,17 +1,17 @@
 {
   "puzzle": 20598,
   "date": "2026-05-25",
-  "placeId": "ChIJYVoDuq2nlVQRXxWEuc3tMvk",
-  "name": "ARCO",
-  "brand": "ARCO",
-  "address": "6508 N Interstate Ave, Portland, OR 97217, USA",
+  "placeId": "ChIJ8T0Nj7uglVQR1DkPrV7GOpI",
+  "name": "76",
+  "brand": "76",
+  "address": "2016 E Burnside St, Portland, OR 97214, USA",
   "city": "Portland",
   "state": "OR",
   "region": "Pacific Northwest",
-  "lat": 45.570218999999994,
-  "lng": -122.681872,
-  "price": 5.25,
+  "lat": 45.52245,
+  "lng": -122.64519,
+  "price": 5.66,
   "currency": "USD",
   "tax": 40,
-  "priceUpdated": "2026-05-24T19:56:50Z"
+  "priceUpdated": "2026-05-25T02:22:30Z"
 }
