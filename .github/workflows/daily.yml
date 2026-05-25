@@ -1,0 +1,16 @@
+on:
+  schedule: [{ cron: "5 7 * * *" }]   # 07:05 UTC daily
+  workflow_dispatch:
+jobs:
+  pick:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: node pick-daily.js
+        env: { GOOGLE_SERVER_KEY: ${{ AIzaSyAl4avbtr3ZBN87qiBneCbpPOj_qG-N7vA }} }
+      - run: |
+          git config user.name gasdle-bot
+          git config user.email bot@gasdle
+          git add daily.json && git commit -m "daily" && git push
