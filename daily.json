@@ -1,0 +1,17 @@
+{
+  "puzzle": 20599,
+  "date": "2026-05-25",
+  "placeId": "ChIJSAMPLE_replace_me",
+  "name": "ARCO",
+  "brand": "ARCO",
+  "address": "9606 Winter Gdns Blvd, Lakeside, CA 92040, USA",
+  "city": "Lakeside",
+  "state": "CA",
+  "region": "West Coast",
+  "lat": 32.8573,
+  "lng": -116.9223,
+  "price": 6.16,
+  "currency": "USD",
+  "tax": 60,
+  "priceUpdated": "2026-05-24T14:00:00Z"
+}
