@@ -1,8 +1,8 @@
-name: Pick Daily
+name: Update daily
 
 on:
   schedule:
-    - cron: "25 20 * * *"
+    - cron: "30 20 * * *" # 1:25 PM California time during PDT
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Generate daily pick
+      - name: Run daily picker
         run: node pick-daily.js
         env:
           GOOGLE_SERVER_KEY: ${{ secrets.GOOGLE_SERVER_KEY }}
