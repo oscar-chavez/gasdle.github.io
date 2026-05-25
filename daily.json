@@ -1,17 +1,17 @@
 {
-  "puzzle": 20599,
+  "puzzle": 20598,
   "date": "2026-05-25",
-  "placeId": "ChIJSAMPLE_replace_me",
+  "placeId": "ChIJYVoDuq2nlVQRXxWEuc3tMvk",
   "name": "ARCO",
   "brand": "ARCO",
-  "address": "9606 Winter Gdns Blvd, Lakeside, CA 92040, USA",
-  "city": "Lakeside",
-  "state": "CA",
-  "region": "West Coast",
-  "lat": 32.8573,
-  "lng": -116.9223,
-  "price": 6.16,
+  "address": "6508 N Interstate Ave, Portland, OR 97217, USA",
+  "city": "Portland",
+  "state": "OR",
+  "region": "Pacific Northwest",
+  "lat": 45.570218999999994,
+  "lng": -122.681872,
+  "price": 5.25,
   "currency": "USD",
-  "tax": 60,
-  "priceUpdated": "2026-05-24T14:00:00Z"
+  "tax": 40,
+  "priceUpdated": "2026-05-24T19:56:50Z"
 }
