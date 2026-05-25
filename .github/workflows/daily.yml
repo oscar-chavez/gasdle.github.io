@@ -9,7 +9,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
       - run: node pick-daily.js
-        env: { GOOGLE_SERVER_KEY: ${{ AIzaSyAl4avbtr3ZBN87qiBneCbpPOj_qG-N7vA }} }
+        env: { GOOGLE_SERVER_KEY: ${{ secrets.GOOGLE_SERVER_KEY }} }
       - run: |
           git config user.name gasdle-bot
           git config user.email bot@gasdle
