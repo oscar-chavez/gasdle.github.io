@@ -1,5 +1,5 @@
 on:
-  schedule: [{ cron: "21 8 * * *" }]   # 07:05 UTC daily
+  schedule: [{ cron: "25 20 * * *" }]   # 07:05 UTC daily
   workflow_dispatch:
 jobs:
   pick:
