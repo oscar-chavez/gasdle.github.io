@@ -1,16 +1,26 @@
-name: Update daily
+name: Update daily and deploy
 
 on:
   schedule:
-    - cron: "30 20 * * *" # 1:25 PM California time during PDT
+    - cron: "45 20 * * *" # change this while testing
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  pick:
+  pick-and-deploy:
     runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - uses: actions/checkout@v4
@@ -19,15 +29,27 @@ jobs:
         with:
           node-version: 20
 
-      - name: Run daily picker
+      - name: Generate daily puzzle
         run: node pick-daily.js
         env:
           GOOGLE_SERVER_KEY: ${{ secrets.GOOGLE_SERVER_KEY }}
 
-      - name: Commit daily.json
+      - name: Commit updated daily.json
         run: |
           git config user.name "gasdle-bot"
           git config user.email "bot@gasdle"
           git add daily.json
-          git diff --cached --quiet || git commit -m "daily"
+          git diff --cached --quiet || git commit -m "Update daily puzzle"
           git push
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
