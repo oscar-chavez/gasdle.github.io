@@ -4,6 +4,24 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>GASDLE — Guess the Pump Price</title>
+<meta name="description" content="Guess the price of regular gas at a mystery U.S. station. One new station every day." />
+
+<!-- Favicons / app icons (relative paths so they work in any folder) -->
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0b0d10">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Social share preview. Replace YOUR-DOMAIN with your real URL for previews to work. -->
+<meta property="og:title" content="Gasdle — Guess the Pump Price">
+<meta property="og:description" content="Guess the price of regular gas at a mystery U.S. station. A new one daily.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://YOUR-DOMAIN/android-chrome-512x512.png">
+<meta name="twitter:card" content="summary">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-465XC89B22"></script>
@@ -31,8 +49,9 @@
   .wrap{width:100%;max-width:480px;padding:clamp(14px,4vw,20px) clamp(12px,4vw,16px) 28px;position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(11px,3vw,14px)}
   header{display:flex;align-items:center;justify-content:space-between;gap:10px}
   .brand{display:flex;align-items:center;gap:10px}
-  .logo{width:clamp(34px,9vw,40px);aspect-ratio:1;border-radius:11px;background:linear-gradient(160deg,var(--amber),#e07c00);display:grid;place-items:center;box-shadow:0 8px 22px -8px rgba(255,182,39,.6)}
-  .logo svg{width:55%;height:55%} .title{font-weight:800;letter-spacing:.16em;font-size:clamp(17px,5.2vw,21px);line-height:1}
+  .logo{width:clamp(38px,10vw,46px);aspect-ratio:1;display:grid;place-items:center;flex:none}
+  .logo img{width:100%;height:100%;object-fit:contain;display:block}
+  .title{font-weight:800;letter-spacing:.16em;font-size:clamp(17px,5.2vw,21px);line-height:1}
   .title small{display:block;letter-spacing:.22em;font-size:9px;color:var(--muted);margin-top:4px;font-weight:600}
   .header-tools{display:flex;gap:8px}
   .icon-btn{width:clamp(34px,9vw,40px);aspect-ratio:1;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:.18s ease}
@@ -99,6 +118,7 @@
   .btn-ghost{background:var(--panel);color:var(--ink)} .countdown{margin-top:12px;font-size:12px;color:var(--muted)} .countdown b{font-family:"DM Mono",monospace;color:var(--ink)}
   .adslot{border:1px dashed var(--line);border-radius:14px;min-height:96px;display:grid;place-items:center;color:#5a6678;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;overflow:hidden}
   footer{text-align:center;color:#54607a;font-size:11px;line-height:1.6}
+  footer a{color:#7c889c}
   .scrim{position:fixed;inset:0;background:rgba(4,6,9,.72);backdrop-filter:blur(6px);z-index:50;display:none;align-items:center;justify-content:center;padding:18px;animation:fade .25s ease}
   .scrim.on{display:flex} @keyframes fade{from{opacity:0}to{opacity:1}}
   .modal{width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow);animation:rowIn .3s ease}
@@ -121,7 +141,7 @@
 <div class="wrap">
   <header>
     <div class="brand">
-      <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1205" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M3 20h12"/><path d="M14 8h2.5a1.5 1.5 0 0 1 1.5 1.5V16a2 2 0 0 0 2 2 2 2 0 0 0 2-2v-7l-3-3"/><path d="M7 7h4"/></svg></div>
+      <div class="logo"><img src="Gasdle_Logo.png" alt="Gasdle logo"></div>
       <div class="title">GASDLE<small>GUESS THE PUMP PRICE</small></div>
     </div>
     <div class="header-tools">
@@ -214,10 +234,10 @@
     "Maverik":{bg:"#1b2a4a",fg:"#f2a900"}, "Murphy USA":{bg:"#0c2340",fg:"#fff"},
     "H-E-B":{bg:"#e2231a",fg:"#fff"}, "Kwik Trip":{bg:"#e3001b",fg:"#ffd200"},
     "RaceTrac":{bg:"#0a3d91",fg:"#fff"}, "7-Eleven":{bg:"#008c48",fg:"#ed1c24"},
-    "Circle K":{bg:"#e21d38",fg:"#fff"}, "Pilot":{bg:"#e31837",fg:"#fff"},
-    "Love's":{bg:"#e31837",fg:"#ffd200"}, "Cumberland Farms":{bg:"#0f7a3a",fg:"#fff"},
-    "Safeway":{bg:"#d61f26",fg:"#fff"}, "Kroger":{bg:"#003da5",fg:"#fff"},
-    "Citgo":{bg:"#ec1c24",fg:"#fff"}, "Gulf":{bg:"#ff7f00",fg:"#003087"}
+    "Pilot":{bg:"#e31837",fg:"#fff"}, "Love's":{bg:"#e31837",fg:"#ffd200"},
+    "Cumberland Farms":{bg:"#0f7a3a",fg:"#fff"}, "Safeway":{bg:"#d61f26",fg:"#fff"},
+    "Kroger":{bg:"#003da5",fg:"#fff"}, "Citgo":{bg:"#ec1c24",fg:"#fff"},
+    "Gulf":{bg:"#ff7f00",fg:"#003087"}
   };
   function brandBadge(brand){
     const b = BRANDS[brand] || {bg:"#ffb627",fg:"#0b0d10"};
