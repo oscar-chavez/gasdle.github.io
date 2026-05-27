@@ -339,7 +339,7 @@
     const n=game.done?4:Math.min(game.guesses.length,4);
     if(n>=1) addHint("State",`${STATE_NAMES[S.state]||S.state}`,"map zoomed");
     if(n>=2) addHint("Brand", brandBadge(S.brand));
-    if(n>=3) addHint("Surroundings","Satellite view — built-up city or open country?","satellite");
+    if(n>=3) addHint("Surroundings","Satellite view — What's nearby?","satellite");
     setMapStage(n);
     if(n>=4) revealStreet();
   }
