@@ -6,7 +6,7 @@
 <title>GASDLE — Guess the Pump Price</title>
 <meta name="description" content="Guess the price of regular gas at a mystery U.S. station. One new station every day." />
 
-<!-- Favicons / app icons (relative paths so they work in any folder) -->
+<!-- Favicons / app icons -->
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -16,11 +16,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<!-- Social share preview. Replace YOUR-DOMAIN with your real URL for previews to work. -->
+<!-- Social share preview. -->
 <meta property="og:title" content="Gasdle — Guess the Pump Price">
 <meta property="og:description" content="Guess the price of regular gas at a mystery U.S. station. A new one daily.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://YOUR-DOMAIN/android-chrome-512x512.png">
+<meta property="og:image" content="https://gasdle.net/android-chrome-512x512.png">
 <meta name="twitter:card" content="summary">
 
 <!-- Google tag (gtag.js) -->
@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<!-- AdSense site verification + library (loads once) -->
+<!-- AdSense site verification + library -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5391892658513330" crossorigin="anonymous"></script>
 <style>
   :root{--bg:#0b0d10;--bg2:#11151b;--panel:#161b22;--panel2:#1c2330;--line:#283142;--ink:#e9eef5;--muted:#8a96a8;
@@ -49,7 +49,7 @@
   .wrap{width:100%;max-width:480px;padding:clamp(14px,4vw,20px) clamp(12px,4vw,16px) 28px;position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(11px,3vw,14px)}
   header{display:flex;align-items:center;justify-content:space-between;gap:10px}
   .brand{display:flex;align-items:center;gap:10px}
-  .logo{width:clamp(38px,10vw,46px);aspect-ratio:1;display:grid;place-items:center;flex:none;   background:#fff;border-radius:11px;padding:5px;box-shadow:0 6px 18px -8px rgba(0,0,0,.6)}
+  .logo{width:clamp(38px,10vw,46px);aspect-ratio:1;display:grid;place-items:center;flex:none;   background:#fff;border-radius:20px;padding:2px;box-shadow:0 6px 18px -8px rgba(0,0,0,.6)}
   .logo img{width:100%;height:100%;object-fit:contain;display:block}
   .title{font-weight:800;letter-spacing:.16em;font-size:clamp(17px,5.2vw,21px);line-height:1}
   .title small{display:block;letter-spacing:.22em;font-size:9px;color:var(--muted);margin-top:4px;font-weight:600}
@@ -83,7 +83,7 @@
   .hint .hv{font-weight:600} .hint .hbadge{margin-left:auto;font-family:"DM Mono",monospace;font-size:11px;color:var(--amber);border:1px solid var(--amber-dim);border-radius:999px;padding:3px 9px;white-space:nowrap}
   .hint .brandwrap{display:flex;align-items:center;gap:9px}
   .hint .blogo{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font-weight:800;font-size:11px;color:#0b0d10;font-family:"DM Mono",monospace;background:var(--amber)}
-  /* brand-colored wordmark (chain name in its palette — not the trademarked logo) */
+  /* brand-colored wordmark  */
   .bwordmark{display:inline-block;padding:5px 12px;border-radius:8px;font-weight:800;font-size:14px;letter-spacing:.01em;line-height:1.1}
   .hint .blogoimg{height:30px;width:auto;border-radius:6px}
   .guesses{display:flex;flex-direction:column;gap:7px}
@@ -218,8 +218,7 @@
     TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",
     WY:"Wyoming",DC:"Washington, D.C."};
 
-  // Brand-colored wordmarks: the chain NAME in its palette — not the trademarked
-  // logo artwork. To use a real image instead, add e.g. logo:"https://..." to an entry.
+  // Brand-colored wordmarks
   const BRANDS={
     "Shell":{bg:"#ffd400",fg:"#d2042d"}, "Chevron":{bg:"#0b4ea2",fg:"#fff"},
     "ARCO":{bg:"#0033a0",fg:"#fff"}, "Costco":{bg:"#e31837",fg:"#fff"},
