@@ -2,7 +2,7 @@ name: Update daily and deploy
 
 on:
   schedule:
-    - cron: "45 20 * * *" # change this while testing
+    - cron: "0 0 * * *" # change this while testing
   workflow_dispatch:
 
 permissions:
