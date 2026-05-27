@@ -4,6 +4,16 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>GASDLE — Guess the Pump Price</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-465XC89B22"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-465XC89B22');
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -54,6 +64,9 @@
   .hint .hv{font-weight:600} .hint .hbadge{margin-left:auto;font-family:"DM Mono",monospace;font-size:11px;color:var(--amber);border:1px solid var(--amber-dim);border-radius:999px;padding:3px 9px;white-space:nowrap}
   .hint .brandwrap{display:flex;align-items:center;gap:9px}
   .hint .blogo{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font-weight:800;font-size:11px;color:#0b0d10;font-family:"DM Mono",monospace;background:var(--amber)}
+  /* brand-colored wordmark (chain name in its palette — not the trademarked logo) */
+  .bwordmark{display:inline-block;padding:5px 12px;border-radius:8px;font-weight:800;font-size:14px;letter-spacing:.01em;line-height:1.1}
+  .hint .blogoimg{height:30px;width:auto;border-radius:6px}
   .guesses{display:flex;flex-direction:column;gap:7px}
   .grow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 14px;animation:rowIn .4s cubic-bezier(.2,.9,.2,1)}
   @keyframes rowIn{from{opacity:0;transform:scale(.96) translateY(6px)}to{opacity:1;transform:none}}
@@ -185,6 +198,33 @@
     TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",
     WY:"Wyoming",DC:"Washington, D.C."};
 
+  // Brand-colored wordmarks: the chain NAME in its palette — not the trademarked
+  // logo artwork. To use a real image instead, add e.g. logo:"https://..." to an entry.
+  const BRANDS={
+    "Shell":{bg:"#ffd400",fg:"#d2042d"}, "Chevron":{bg:"#0b4ea2",fg:"#fff"},
+    "ARCO":{bg:"#0033a0",fg:"#fff"}, "Costco":{bg:"#e31837",fg:"#fff"},
+    "Exxon":{bg:"#ce1126",fg:"#fff"}, "Mobil":{bg:"#ffffff",fg:"#e4002b"},
+    "76":{bg:"#ff6a00",fg:"#003da5"}, "Valero":{bg:"#00843d",fg:"#fff"},
+    "BP":{bg:"#009b3a",fg:"#ffe600"}, "Marathon":{bg:"#003da5",fg:"#fff"},
+    "Speedway":{bg:"#e31837",fg:"#fff"}, "Circle K":{bg:"#e21d38",fg:"#fff"},
+    "QuikTrip":{bg:"#e21d38",fg:"#fff"}, "Wawa":{bg:"#c8202f",fg:"#ffd200"},
+    "Sheetz":{bg:"#e3001b",fg:"#fff"}, "Casey's":{bg:"#c8102e",fg:"#fff"},
+    "Buc-ee's":{bg:"#e2231a",fg:"#ffd200"}, "Sunoco":{bg:"#0033a0",fg:"#ffd200"},
+    "Texaco":{bg:"#ec1c24",fg:"#fff"}, "Sinclair":{bg:"#00843d",fg:"#fff"},
+    "Maverik":{bg:"#1b2a4a",fg:"#f2a900"}, "Murphy USA":{bg:"#0c2340",fg:"#fff"},
+    "H-E-B":{bg:"#e2231a",fg:"#fff"}, "Kwik Trip":{bg:"#e3001b",fg:"#ffd200"},
+    "RaceTrac":{bg:"#0a3d91",fg:"#fff"}, "7-Eleven":{bg:"#008c48",fg:"#ed1c24"},
+    "Circle K":{bg:"#e21d38",fg:"#fff"}, "Pilot":{bg:"#e31837",fg:"#fff"},
+    "Love's":{bg:"#e31837",fg:"#ffd200"}, "Cumberland Farms":{bg:"#0f7a3a",fg:"#fff"},
+    "Safeway":{bg:"#d61f26",fg:"#fff"}, "Kroger":{bg:"#003da5",fg:"#fff"},
+    "Citgo":{bg:"#ec1c24",fg:"#fff"}, "Gulf":{bg:"#ff7f00",fg:"#003087"}
+  };
+  function brandBadge(brand){
+    const b = BRANDS[brand] || {bg:"#ffb627",fg:"#0b0d10"};
+    if(b.logo) return `<img class="blogoimg" src="${b.logo}" alt="${brand}">`;
+    return `<span class="bwordmark" style="background:${b.bg};color:${b.fg}">${brand}</span>`;
+  }
+
   const store=(()=>{let ok=false;try{localStorage.setItem("__t","1");localStorage.removeItem("__t");ok=true;}catch(e){}const mem={};
     return{get(k){try{return ok?localStorage.getItem(k):(k in mem?mem[k]:null);}catch(e){return k in mem?mem[k]:null;}},
            set(k,v){try{ok?localStorage.setItem(k,v):(mem[k]=v);}catch(e){mem[k]=v;}}};})();
@@ -279,8 +319,7 @@
     $("hints").innerHTML="";
     const n=game.done?4:Math.min(game.guesses.length,4);
     if(n>=1) addHint("State",`${STATE_NAMES[S.state]||S.state}`,"map zoomed");
-    if(n>=2){const init=(S.brand||"?").replace(/[^A-Za-z0-9]/g,"").slice(0,2).toUpperCase();
-      addHint("Brand",`<div class="brandwrap"><div class="blogo">${init}</div><span>${S.brand}</span></div>`);}
+    if(n>=2) addHint("Brand", brandBadge(S.brand));
     if(n>=3) addHint("Surroundings","Satellite view — built-up city or open country?","satellite");
     setMapStage(n);
     if(n>=4) revealStreet();
