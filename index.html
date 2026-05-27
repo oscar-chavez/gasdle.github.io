@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- AdSense site verification + library (loads once) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5391892658513330" crossorigin="anonymous"></script>
 <style>
   :root{--bg:#0b0d10;--bg2:#11151b;--panel:#161b22;--panel2:#1c2330;--line:#283142;--ink:#e9eef5;--muted:#8a96a8;
     --amber:#ffb627;--amber-dim:#9b7320;--green:#3dd68c;--red:#ff5c5c;--blue:#5ca8ff;--readout:#ffce5c;
@@ -15,34 +17,35 @@
   body{background:radial-gradient(900px 500px at 50% -10%,rgba(255,182,39,.10),transparent 60%),radial-gradient(700px 600px at 110% 20%,rgba(92,168,255,.06),transparent 60%),var(--bg);
     color:var(--ink);font-family:"Bricolage Grotesque",system-ui,sans-serif;min-height:100dvh;display:flex;justify-content:center;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.015) 0 1px,transparent 1px 3px);mix-blend-mode:overlay;opacity:.5}
-  .wrap{width:100%;max-width:460px;padding:18px 16px 28px;position:relative;z-index:1;display:flex;flex-direction:column;gap:14px}
+  /* fluid column: full width on phones, comfortable max on bigger screens */
+  .wrap{width:100%;max-width:480px;padding:clamp(14px,4vw,20px) clamp(12px,4vw,16px) 28px;position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(11px,3vw,14px)}
   header{display:flex;align-items:center;justify-content:space-between;gap:10px}
   .brand{display:flex;align-items:center;gap:10px}
-  .logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(160deg,var(--amber),#e07c00);display:grid;place-items:center;box-shadow:0 8px 22px -8px rgba(255,182,39,.6)}
-  .logo svg{width:22px;height:22px} .title{font-weight:800;letter-spacing:.16em;font-size:20px;line-height:1}
+  .logo{width:clamp(34px,9vw,40px);aspect-ratio:1;border-radius:11px;background:linear-gradient(160deg,var(--amber),#e07c00);display:grid;place-items:center;box-shadow:0 8px 22px -8px rgba(255,182,39,.6)}
+  .logo svg{width:55%;height:55%} .title{font-weight:800;letter-spacing:.16em;font-size:clamp(17px,5.2vw,21px);line-height:1}
   .title small{display:block;letter-spacing:.22em;font-size:9px;color:var(--muted);margin-top:4px;font-weight:600}
   .header-tools{display:flex;gap:8px}
-  .icon-btn{width:38px;height:38px;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:.18s ease}
-  .icon-btn:hover{background:var(--panel2);border-color:var(--amber-dim);transform:translateY(-1px)} .icon-btn svg{width:18px;height:18px}
-  .pump{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .icon-btn{width:clamp(34px,9vw,40px);aspect-ratio:1;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:.18s ease}
+  .icon-btn:hover{background:var(--panel2);border-color:var(--amber-dim);transform:translateY(-1px)} .icon-btn svg{width:46%;height:46%}
+  .pump{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:var(--r);padding:clamp(14px,4vw,18px);box-shadow:var(--shadow);position:relative;overflow:hidden}
   .tag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:700}
   .tag .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber);animation:blink 1.6s infinite}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-  .display{margin-top:12px;background:#06080b;border:1px solid #222a36;border-radius:14px;padding:16px 18px;position:relative;overflow:hidden}
+  .display{margin-top:12px;background:#06080b;border:1px solid #222a36;border-radius:14px;padding:clamp(13px,4vw,16px) clamp(14px,4vw,18px);position:relative;overflow:hidden}
   .display::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,206,92,.05) 0 2px,transparent 2px 4px);pointer-events:none}
   .display .lbl{font-size:10px;letter-spacing:.18em;color:#6b7686;text-transform:uppercase;font-weight:700}
-  .readout{font-family:"DM Mono",monospace;font-weight:500;font-size:54px;line-height:1;color:var(--readout);text-shadow:0 0 18px rgba(255,206,92,.45);letter-spacing:.02em;margin-top:6px;display:flex;align-items:baseline;gap:2px}
-  .readout .cur{font-size:26px;opacity:.8;transform:translateY(-12px)}
+  .readout{font-family:"DM Mono",monospace;font-weight:500;font-size:clamp(40px,13vw,54px);line-height:1;color:var(--readout);text-shadow:0 0 18px rgba(255,206,92,.45);letter-spacing:.02em;margin-top:6px;display:flex;align-items:baseline;gap:2px}
+  .readout .cur{font-size:clamp(20px,6.2vw,26px);opacity:.8;transform:translateY(-12px)}
   .readout.win{color:var(--green);text-shadow:0 0 22px rgba(61,214,140,.5)}
   .readout.flick{animation:flick .5s ease} @keyframes flick{0%,100%{opacity:1}20%{opacity:.4}40%{opacity:1}55%{opacity:.5}}
   .locator{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);background:#070a0e;position:relative}
-  #map,#streetview{width:100%;height:172px;background:#0c1219}
+  #map,#streetview{width:100%;height:clamp(150px,46vw,196px);background:#0c1219}
   .panelhead{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;
     padding:8px 11px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#aeb8c6;font-weight:700;
     background:linear-gradient(180deg,rgba(6,8,11,.85),transparent);pointer-events:none}
   .panelhead b{color:var(--amber)} .zoomchip{font-family:"DM Mono",monospace;color:var(--amber)}
   .mapwrap{position:relative} .svwrap{position:relative;border-top:1px solid var(--line);display:none} .svwrap.on{display:block}
-  .placeholder{height:172px;display:grid;place-items:center;text-align:center;color:#5f6f84;font-size:12px;padding:0 24px;background:repeating-linear-gradient(45deg,rgba(255,255,255,.012) 0 12px,transparent 12px 24px)}
+  .placeholder{height:clamp(150px,46vw,196px);display:grid;place-items:center;text-align:center;color:#5f6f84;font-size:12px;padding:0 24px;background:repeating-linear-gradient(45deg,rgba(255,255,255,.012) 0 12px,transparent 12px 24px)}
   .placeholder code{color:var(--amber);font-family:"DM Mono",monospace;font-size:11px}
   .hints{display:flex;flex-direction:column;gap:8px}
   .hint{display:flex;align-items:center;gap:11px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:12px;padding:11px 13px;font-size:13.5px;animation:hintIn .45s cubic-bezier(.2,.8,.2,1)}
@@ -59,9 +62,9 @@
   .meter i{position:absolute;inset:0 auto 0 0;border-radius:999px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
   .verdict{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;white-space:nowrap} .verdict svg{width:16px;height:16px}
   .v-cold{color:var(--blue)} .v-high{color:var(--red)} .v-win{color:var(--green)}
-  .pad{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+  .pad{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:clamp(13px,4vw,16px);box-shadow:var(--shadow)}
   .pendlbl{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
-  .pend{font-family:"DM Mono",monospace;font-size:46px;font-weight:500;text-align:center;color:var(--ink);margin:4px 0 12px}
+  .pend{font-family:"DM Mono",monospace;font-size:clamp(34px,11vw,46px);font-weight:500;text-align:center;color:var(--ink);margin:4px 0 12px}
   .pend.shake{animation:shake .4s} @keyframes shake{10%,90%{transform:translateX(-2px)}30%,70%{transform:translateX(4px)}50%{transform:translateX(-6px)}}
   .slider{width:100%;-webkit-appearance:none;height:8px;border-radius:999px;background:linear-gradient(90deg,var(--green),var(--readout),var(--red));outline:none;margin:2px 0 14px}
   .slider::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:4px solid var(--amber);cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.5)}
@@ -73,10 +76,10 @@
   .submit:hover{transform:translateY(-2px);box-shadow:0 16px 32px -10px rgba(255,182,39,.8)}
   .triesleft{text-align:center;color:var(--muted);font-size:12px;margin-top:10px} .triesleft b{color:var(--amber)}
   .result{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--r);padding:18px;text-align:center;box-shadow:var(--shadow);animation:hintIn .5s ease}
-  .result h2{margin:0 0 4px;font-size:22px} .result .sub{color:var(--muted);font-size:13px;margin-bottom:14px}
+  .result h2{margin:0 0 4px;font-size:clamp(19px,6vw,22px)} .result .sub{color:var(--muted);font-size:13px;margin-bottom:14px}
   .result .full{background:#06080b;border:1px solid #222a36;border-radius:12px;padding:12px 14px;margin-bottom:14px;text-align:left}
   .result .full .nm{font-weight:800;font-size:16px} .result .full .ad{color:var(--muted);font-size:13px;margin-top:2px}
-  .result .full .pr{font-family:"DM Mono",monospace;font-size:30px;color:var(--readout);margin-top:8px;text-shadow:0 0 16px rgba(255,206,92,.4)}
+  .result .full .pr{font-family:"DM Mono",monospace;font-size:clamp(26px,8vw,30px);color:var(--readout);margin-top:8px;text-shadow:0 0 16px rgba(255,206,92,.4)}
   .result .full .stale{color:#6b7686;font-size:11px;margin-top:4px}
   .resbtns{display:flex;gap:8px} .resbtns button{flex:1;border-radius:12px;padding:13px;font-weight:700;cursor:pointer;border:1px solid var(--line);transition:.15s ease;font-size:13px}
   .btn-share{background:var(--green);color:#062a18;border-color:transparent} .btn-share:hover{filter:brightness(1.08);transform:translateY(-1px)}
@@ -97,13 +100,9 @@
   .how li{color:var(--muted);font-size:13.5px;line-height:1.7;margin-bottom:4px}
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);color:#0b0d10;padding:11px 18px;border-radius:999px;font-weight:700;font-size:13px;z-index:60;transition:.3s ease;pointer-events:none}
   .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+  /* a touch tighter on very small phones */
+  @media (max-width:360px){ .steppers{gap:6px} .step{font-size:12px} .grow{gap:9px;padding:10px 12px} }
 </style>
-  
-<!-- adsense verification -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5391892658513330"
-   crossorigin="anonymous"></script>
-  
-  
 </head>
 <body>
 <div class="wrap">
@@ -165,20 +164,26 @@
 
 <script>
 /* ===========================================================================
-   KEYS — fill these in, then deploy.
-   • GOOGLE_MAPS_BROWSER_KEY: Maps JS API key, restricted by HTTP referrer
-     (your domain) in Google Cloud. Meant to be public.
+   KEYS
+   • GOOGLE_MAPS_BROWSER_KEY: Maps JS key. Public by nature — RESTRICT it by
+     HTTP referrer (your domain) + API in Google Cloud. Cannot be "hidden".
    • ADSENSE_CLIENT / ADSENSE_SLOT: from your AdSense account.
-   Game stays fully playable while these are placeholders; map + ad show
-   placeholders until set.
    =========================================================================== */
   const GOOGLE_MAPS_BROWSER_KEY = "AIzaSyAl4avbtr3ZBN87qiBneCbpPOj_qG-N7vA";
   const ADSENSE_CLIENT = "ca-pub-5391892658513330";
   const ADSENSE_SLOT   = "3192746912";
 
-  const NATIONAL_AVG = 4.51;   // update occasionally from AAA/EIA
   const WIN_BAND=0.05, HOT_BAND=0.15, WARM_BAND=0.40, MAX_GUESSES=5;
   const $=id=>document.getElementById(id);
+
+  const STATE_NAMES={AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",
+    CT:"Connecticut",DE:"Delaware",FL:"Florida",GA:"Georgia",HI:"Hawaii",ID:"Idaho",IL:"Illinois",IN:"Indiana",
+    IA:"Iowa",KS:"Kansas",KY:"Kentucky",LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",
+    MN:"Minnesota",MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",NV:"Nevada",NH:"New Hampshire",
+    NJ:"New Jersey",NM:"New Mexico",NY:"New York",NC:"North Carolina",ND:"North Dakota",OH:"Ohio",OK:"Oklahoma",
+    OR:"Oregon",PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",TN:"Tennessee",
+    TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",
+    WY:"Wyoming",DC:"Washington, D.C."};
 
   const store=(()=>{let ok=false;try{localStorage.setItem("__t","1");localStorage.removeItem("__t");ok=true;}catch(e){}const mem={};
     return{get(k){try{return ok?localStorage.getItem(k):(k in mem?mem[k]:null);}catch(e){return k in mem?mem[k]:null;}},
@@ -187,7 +192,7 @@
   const loadState=()=>{try{return JSON.parse(store.get(SK))||{};}catch(e){return{};}};
   const saveState=s=>store.set(SK,JSON.stringify(s));
 
-  let S=null, game=null, gmap=null, marker=null, mapsReady=false;
+  let S=null, game=null, gmap=null, marker=null, mapsReady=false, svDone=false;
 
   (async function boot(){
     try{ const r=await fetch("daily.json",{cache:"no-store"}); S=await r.json(); }
@@ -203,7 +208,7 @@
 
   const DARK=[
     {elementType:"geometry",stylers:[{color:"#0e141b"}]},
-    {elementType:"labels.text.fill",stylers:[{color:"#6b7686"}]},
+    {elementType:"labels.text.fill",stylers:[{color:"#8593a6"}]},
     {elementType:"labels.text.stroke",stylers:[{color:"#0b0d10"}]},
     {featureType:"road",elementType:"geometry",stylers:[{color:"#222b36"}]},
     {featureType:"road",elementType:"labels",stylers:[{visibility:"off"}]},
@@ -213,43 +218,38 @@
     {featureType:"administrative",elementType:"geometry",stylers:[{color:"#2a3645"}]}
   ];
 
-  window.initMap=function(){
-    mapsReady=true;
-    gmap=new google.maps.Map($("map"),{center:{lat:S.lat,lng:S.lng},zoom:4,
-      disableDefaultUI:true,gestureHandling:"none",keyboardShortcuts:false,styles:DARK,backgroundColor:"#0c1219"});
-    setMapMode((game.done||game.guesses.length>=3)?"metro":"region");
-    if(game.done||game.guesses.length>=4) revealStreet();
-  };
-
-  function setMapMode(mode){
-    $("zoomChip").textContent = mode==="metro"?"ZOOM 13×":"ZOOM 4×";
-    $("mapMode").textContent  = mode==="metro"?"LOCATOR · metro":"LOCATOR · region";
+  // Stage 0 region · 1 state · 2 area · 3 satellite · 4 street view
+  const STAGE_ZOOM=[5,7,10,14,16], STAGE_LABEL=["region","state","area","satellite","street"];
+  function setMapStage(n){
+    $("zoomChip").textContent="ZOOM "+STAGE_ZOOM[n]+"×";
+    $("mapMode").textContent="LOCATOR · "+STAGE_LABEL[n];
     if(!mapsReady) return;
-    if(mode==="metro"){
-      gmap.panTo({lat:S.lat,lng:S.lng}); gmap.setZoom(13);
-      if(!marker) marker=new google.maps.Marker({position:{lat:S.lat,lng:S.lng},map:gmap,
-        icon:{path:google.maps.SymbolPath.CIRCLE,scale:7,fillColor:"#ffb627",fillOpacity:1,strokeColor:"#1a1205",strokeWeight:2}});
-    } else { gmap.setZoom(4); }
+    gmap.panTo({lat:S.lat,lng:S.lng});
+    gmap.setZoom(STAGE_ZOOM[n]);
+    gmap.setMapTypeId(n>=4?"hybrid":n>=3?"satellite":"roadmap");
+    if(n>=4 && !marker) marker=new google.maps.Marker({position:{lat:S.lat,lng:S.lng},map:gmap,
+      icon:{path:google.maps.SymbolPath.CIRCLE,scale:7,fillColor:"#ffb627",fillOpacity:1,strokeColor:"#1a1205",strokeWeight:2}});
   }
   function revealStreet(){
     $("svwrap").classList.add("on");
-    if(GOOGLE_MAPS_BROWSER_KEY==="YOUR_BROWSER_KEY"){
-      $("streetview").outerHTML=`<div class="placeholder">Street View of the block appears here with your key.</div>`; return;
-    }
-    if(!mapsReady) return;
+    if(GOOGLE_MAPS_BROWSER_KEY==="YOUR_BROWSER_KEY"){ $("streetview").outerHTML=`<div class="placeholder">Street View of the block appears here with your key.</div>`; return; }
+    if(!mapsReady||svDone) return; svDone=true;
     new google.maps.StreetViewPanorama($("streetview"),{position:{lat:S.lat,lng:S.lng},
       pov:{heading:34,pitch:0},zoom:0,disableDefaultUI:true,addressControl:false,showRoadLabels:false,motionTracking:false});
   }
 
+  window.initMap=function(){
+    mapsReady=true;
+    gmap=new google.maps.Map($("map"),{center:{lat:S.lat,lng:S.lng},zoom:STAGE_ZOOM[0],
+      disableDefaultUI:true,gestureHandling:"none",keyboardShortcuts:false,styles:DARK,backgroundColor:"#0c1219"});
+    const n=game.done?4:Math.min(game.guesses.length,4);
+    setMapStage(n); if(n>=4) revealStreet();
+  };
+
   function initAds(){
-    if(ADSENSE_CLIENT.includes("XXXX")) return;
+    if(ADSENSE_CLIENT.includes("XXXX")) return;     // keep placeholder until real IDs set
     $("adPlaceholder").style.display="none";
-    document.querySelector(".adsbygoogle").setAttribute("data-ad-client",ADSENSE_CLIENT);
-    document.querySelector(".adsbygoogle").setAttribute("data-ad-slot",ADSENSE_SLOT);
-    const s=document.createElement("script"); s.async=true; s.crossOrigin="anonymous";
-    s.src=`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`;
-    document.head.appendChild(s);
-    s.onload=()=>{try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}};
+    try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}
     /* MEMBERS: when a paid member is logged in, skip initAds() and hide #adslot. */
   }
 
@@ -273,17 +273,16 @@
     return{cls:diff>0?"v-high":"v-cold",txt:(diff>0?"Too high":"Too low")+" · "+t,icon:diff>0?arrowDown:arrowUp,win:false,temp:ad<=HOT_BAND?.9:ad<=WARM_BAND?.55:.25};}
   function renderGuesses(){const el=$("guesses");el.innerHTML="";game.guesses.forEach(g=>{const v=verdictFor(g);const row=document.createElement("div");row.className="grow";
     row.innerHTML=`<div class="gval">$${g.toFixed(2)}</div><div class="meter"><i style="width:${Math.round(v.temp*100)}%;background:${v.win?'var(--green)':'var(--amber)'}"></i></div><div class="verdict ${v.cls}">${v.icon}<span>${v.txt}</span></div>`;el.appendChild(row);});}
-  function taxDesc(c){return c==null?"":c>=50?"among the highest in the U.S.":c>=36?"above the U.S. average":c>=26?"around the U.S. average":"among the lowest in the U.S.";}
   function addHint(k,vHtml,badge){const el=document.createElement("div");el.className="hint";
     el.innerHTML=`<div><div class="hk">${k}</div><div class="hv">${vHtml}</div></div>`+(badge?`<div class="hbadge">${badge}</div>`:"");$("hints").appendChild(el);}
   function renderHints(){
     $("hints").innerHTML="";
     const n=game.done?4:Math.min(game.guesses.length,4);
-    if(n>=1 && S.tax!=null) addHint("State gas tax",`<b>${S.tax}¢</b>/gal — ${taxDesc(S.tax)}`,"vs avg "+NATIONAL_AVG.toFixed(2));
+    if(n>=1) addHint("State",`${STATE_NAMES[S.state]||S.state}`,"map zoomed");
     if(n>=2){const init=(S.brand||"?").replace(/[^A-Za-z0-9]/g,"").slice(0,2).toUpperCase();
       addHint("Brand",`<div class="brandwrap"><div class="blogo">${init}</div><span>${S.brand}</span></div>`);}
-    if(n>=3) addHint("Location",`${S.city?S.city+", ":""}${S.state}`,"map zoomed");
-    setMapMode(n>=3?"metro":"region");
+    if(n>=3) addHint("Surroundings","Satellite view — built-up city or open country?","satellite");
+    setMapStage(n);
     if(n>=4) revealStreet();
   }
   function updateTries(){const left=MAX_GUESSES-game.guesses.length;$("triesleft").innerHTML=`<b>${left}</b> guess${left===1?"":"es"} left`;}
@@ -320,7 +319,7 @@
     const winpct=played?Math.round(wins/played*100):0,maxd=Math.max(1,...dist);
     const bars=dist.map((c,i)=>{const cur=game.done&&game.won&&game.guesses.length===i+1;return`<div class="dbar"><span class="n">${i+1}</span><div class="fill ${cur?'cur':''}" style="width:${Math.max(8,Math.round(c/maxd*100))}%">${c}</div></div>`;}).join("");
     openModal(`<button class="close-x" data-close>×</button><h3>Your stats</h3><div class="stats"><div class="stat"><b>${played}</b><span>Played</span></div><div class="stat"><b>${winpct}</b><span>Win %</span></div><div class="stat"><b>${s.streak||0}</b><span>Streak</span></div><div class="stat"><b>${s.max||0}</b><span>Max</span></div></div><div class="hk" style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700">Guess distribution</div>${bars}`);}
-  function openHow(){openModal(`<button class="close-x" data-close>×</button><h3>How to play</h3><p>A real U.S. gas station is hidden each day. Guess the price of <b>regular</b>, per gallon.</p><ul class="how"><li><b>5 guesses</b>, with too high / too low + hot-cold feedback.</li><li>Start with a <b>region map</b>; each wrong guess unlocks: <b>state gas tax → brand → the map zooms in → Street View</b>.</li><li>Within <b>5¢</b> wins. New station at midnight.</li></ul>`);}
+  function openHow(){openModal(`<button class="close-x" data-close>×</button><h3>How to play</h3><p>A real U.S. gas station is hidden each day. Guess the price of <b>regular</b>, per gallon.</p><ul class="how"><li><b>5 guesses</b>, with too high / too low + hot-cold feedback.</li><li>Start with a <b>region map</b>; each wrong guess unlocks: <b>state → brand → satellite view → Street View</b>, and the map zooms in each time.</li><li>Within <b>5¢</b> wins. New station at midnight.</li></ul>`);}
   const scrim=$("scrim"),modalBody=$("modalBody");
   function openModal(h){modalBody.innerHTML=h;scrim.classList.add("on");modalBody.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>scrim.classList.remove("on"));}
   scrim.addEventListener("click",e=>{if(e.target===scrim)scrim.classList.remove("on");});
@@ -332,4 +331,3 @@
 </script>
 </body>
 </html>
-
