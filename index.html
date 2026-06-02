@@ -87,7 +87,9 @@
   .bwordmark{display:inline-block;padding:5px 12px;border-radius:8px;font-weight:800;font-size:14px;letter-spacing:.01em;line-height:1.1}
   .hint .blogoimg{height:30px;width:auto;border-radius:6px}
   .guesses{display:flex;flex-direction:column;gap:7px}
-  .grow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 14px;animation:rowIn .4s cubic-bezier(.2,.9,.2,1)}
+  .grow{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 14px;animation:rowIn .4s cubic-bezier(.2,.9,.2,1)}
+  .grow .meter{display:none}
+  .grow .verdict{justify-self:end}
   @keyframes rowIn{from{opacity:0;transform:scale(.96) translateY(6px)}to{opacity:1;transform:none}}
   .grow .gval{font-family:"DM Mono",monospace;font-size:18px;font-weight:500}
   .meter{height:7px;border-radius:999px;background:#0c1016;position:relative;overflow:hidden}
@@ -196,12 +198,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-/* ===========================================================================
-   KEYS
-   • GOOGLE_MAPS_BROWSER_KEY: Maps JS key. Public by nature — RESTRICT it by
-     HTTP referrer (your domain) + API in Google Cloud. Cannot be "hidden".
-   • ADSENSE_CLIENT / ADSENSE_SLOT: from your AdSense account.
-   =========================================================================== */
+
   const GOOGLE_MAPS_BROWSER_KEY = "AIzaSyAl4avbtr3ZBN87qiBneCbpPOj_qG-N7vA";
   const ADSENSE_CLIENT = "ca-pub-5391892658513330";
   const ADSENSE_SLOT   = "3192746912";
@@ -218,7 +215,7 @@
     TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",
     WY:"Wyoming",DC:"Washington, D.C."};
 
-  // Brand-colored wordmarks
+  // Brand colors
   const BRANDS={
     "Shell":{bg:"#ffd400",fg:"#d2042d"}, "Chevron":{bg:"#0b4ea2",fg:"#fff"},
     "ARCO":{bg:"#0033a0",fg:"#fff"}, "Costco":{bg:"#e31837",fg:"#fff"},
@@ -306,7 +303,7 @@
   };
 
   function initAds(){
-    if(ADSENSE_CLIENT.includes("XXXX")) return;     // keep placeholder until real IDs set
+    if(ADSENSE_CLIENT.includes("XXXX")) return;     
     $("adPlaceholder").style.display="none";
     try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}
     /* MEMBERS: when a paid member is logged in, skip initAds() and hide #adslot. */
