@@ -1,17 +1,17 @@
 {
   "puzzle": 20614,
   "date": "2026-06-10",
-  "placeId": "ChIJn996jJARK4cR0bZE7tb3kcA",
-  "name": "Chevron",
-  "brand": "Chevron",
-  "address": "2045 S 7th Ave, Phoenix, AZ 85007, USA",
-  "city": "Phoenix",
-  "state": "AZ",
+  "placeId": "ChIJE84s9WQLIocRnDdHNry9Ago",
+  "name": "Smith's Fuel Center",
+  "brand": "Smith's Fuel Center",
+  "address": "410 Yale Blvd SE, Albuquerque, NM 87106, USA",
+  "city": "Albuquerque",
+  "state": "NM",
   "region": "Southwest",
-  "lat": 33.428573899999996,
-  "lng": -112.08215469999999,
-  "price": 5,
+  "lat": 35.0748801,
+  "lng": -106.6217121,
+  "price": 3.86,
   "currency": "USD",
-  "tax": 18,
-  "priceUpdated": "2026-06-09T17:07:06Z"
+  "tax": 19,
+  "priceUpdated": "2026-06-09T12:32:42Z"
 }
